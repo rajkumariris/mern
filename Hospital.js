@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 
-function userMiddleware(req, res){
+function userMiddleware(req, res,next){
     const username= req.headers.username;
     const pass= req.headers.pass;
   
@@ -19,7 +19,7 @@ function userMiddleware(req, res){
         next();
       }
 }
-function kidneyMiddleware(req, res){
+function kidneyMiddleware(req, res,next){
     const kidney=  req.query.kidney;   
     if(kidney!=1 || kidney!=2){
       return res.status(404).json({
